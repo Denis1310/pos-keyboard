@@ -4,6 +4,7 @@
 #include "enums.h"
 #include "database.h"
 #include <QDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class CommandWindow;

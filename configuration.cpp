@@ -13,7 +13,7 @@ Configuration::~Configuration()
 
 void Configuration::openDB()
 {
-    QString path = "./../pos-keyboardPJ/Data/config.db";
+    QString path = "./Data/config.db";
         db = QSqlDatabase::addDatabase("QSQLITE");
         db.setDatabaseName(path);
 

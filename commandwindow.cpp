@@ -64,10 +64,21 @@ void CommandWindow::on_backButton_clicked()
     close();
 }
 
-
 void CommandWindow::on_doneButton_clicked()
 {
+    if (ui->nameLabel->text() != "" && ui->dataLine->text() != "")
+    {
+        db->setValues(num, ui->nameLine->text(), num,
+                      QString::fromStdString(createCommand(ui->typeComboBox->currentIndex(),
+                                                       db->searchCommand(num).toStdString()))
+                  );
 
+        close();
+    }
+    else
+    {
+        QMessageBox::warning(this, "", "Поля не можут бути порожніми");
+    }
 }
 
 std::string CommandWindow::createCommand(int type, std::string path)

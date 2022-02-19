@@ -22,7 +22,7 @@ ListPresets::~ListPresets()
 
 void ListPresets::readDB()
 {
-    QString path = "./../pos-keyboardPJ/Data/Database.db";
+    QString path = "./Data/Database.db";
 
     this->presets_DB = QSqlDatabase::addDatabase("QSQLITE");
     this->presets_DB.setDatabaseName(path);

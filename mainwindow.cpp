@@ -8,13 +8,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connectingStatus = new QLabel();
 
-    printPresets();
 
     // TODO:
     connectingStatus->setText(((isConnected) ? ("Статус: Підключено") : ("Статус: Не підключено")));
 
     ui->statusbar->addPermanentWidget(connectingStatus);
 
+    printPresets();
     // Завантаження останього вибраного пресету
     db.readDB(conf.getLastPreset());
     ui->presetsComboBox->setCurrentText(conf.getLastPreset());
@@ -55,9 +55,9 @@ void MainWindow::on_commandTable_cellDoubleClicked(int row, int column)
 {
     CommandWindow *commandWindow = new CommandWindow;
     commandWindow->setNum(tableToList(row, column));
+    commandWindow->setDB(db);
     commandWindow->setModal(true);
     commandWindow->exec();
-
 }
 
 // Конвертує
