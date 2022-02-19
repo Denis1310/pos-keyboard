@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>CommandWindow</class>
  <widget class="QDialog" name="CommandWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,8 +13,14 @@
     <height>184</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>450</width>
+    <height>184</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string> </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>

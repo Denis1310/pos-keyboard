@@ -66,18 +66,19 @@ void CommandWindow::on_backButton_clicked()
 
 void CommandWindow::on_doneButton_clicked()
 {
-    if (ui->nameLabel->text() != "" && ui->dataLine->text() != "")
+    if (ui->nameLine->text() != "" && (ui->typeComboBox->currentIndex() == 5 || ui->dataLine->text() != ""))
     {
         db->setValues(num, ui->nameLine->text(), num,
                       QString::fromStdString(createCommand(ui->typeComboBox->currentIndex(),
                                                        db->searchCommand(num).toStdString()))
                   );
 
+        emit inputData();
         close();
     }
     else
     {
-        QMessageBox::warning(this, "", "Поля не можут бути порожніми");
+        QMessageBox::warning(this, "", "Введіть дані");
     }
 }
 

@@ -23,6 +23,9 @@ public:
     void keyPress(int keyCode);
     ~CommandWindow();
 
+signals:
+    void inputData();
+
 private slots:
     void on_typeComboBox_currentIndexChanged(int index);
     void on_backButton_clicked();

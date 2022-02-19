@@ -54,13 +54,16 @@ void MainWindow::loadKeys()
 void MainWindow::on_commandTable_cellDoubleClicked(int row, int column)
 {
     CommandWindow *commandWindow = new CommandWindow;
+
+    connect(commandWindow, &CommandWindow::inputData, this, &MainWindow::loadKeys);
+
     commandWindow->setNum(tableToList(row, column));
     commandWindow->setDB(db);
     commandWindow->setModal(true);
     commandWindow->exec();
 }
 
-// Конвертує
+// Конвертує номер із таблиці в список
 int MainWindow::tableToList(int row, int column)
 {
     switch (row)
@@ -200,5 +203,6 @@ void MainWindow::on_presetsComboBox_currentIndexChanged(int index)
     {
         db.readDB(ui->presetsComboBox->itemText(index));
         conf.setLastPreset(ui->presetsComboBox->itemText(index));
+        loadKeys();
     }
 }

@@ -23,6 +23,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public:
+    void printPresets();
+    void loadKeys();
+
 private slots:
     void on_commandTable_cellDoubleClicked(int row, int column);
     void on_settingsAction_triggered();
@@ -30,8 +34,6 @@ private slots:
     void on_exportAction_triggered();
     void on_deleteAction_triggered();
     void on_presetsComboBox_currentIndexChanged(int index);
-    void printPresets();
-    void loadKeys();
 
 private:
     int tableToList(int row, int column);
