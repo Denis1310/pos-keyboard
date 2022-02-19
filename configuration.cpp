@@ -87,19 +87,19 @@ void Configuration::setConfigurationInDB()
 }
 
 // Повернути затримку
-int Configuration::searchAwait()
+int Configuration::getAwait()
 {
     return this->await;
 }
 
 // Повернути стан автозапуску
-bool Configuration::searchAutoload()
+bool Configuration::getAutoload()
 {
     return this->check_autoload;
 }
 
 // Повернути назву останнього пресету
-QString Configuration::searchLastPreset()
+QString Configuration::getLastPreset()
 {
     return this->last_preset;
 }

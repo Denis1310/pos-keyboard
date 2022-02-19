@@ -21,9 +21,9 @@ public:
     void setAwait(int _await);
     void setLastPreset(QString preset_name);
     void setAutoload(bool check);
-    QString searchLastPreset();
-    bool searchAutoload();
-    int searchAwait();
+    QString getLastPreset();
+    bool getAutoload();
+    int getAwait();
 
 private:
     QSqlDatabase db;

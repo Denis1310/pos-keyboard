@@ -9,6 +9,7 @@
 #include "settingswindow.h"
 #include "database.h"
 #include "listpresets.h"
+#include "configuration.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,12 +31,14 @@ private slots:
     void on_deleteAction_triggered();
     void on_presetsComboBox_currentIndexChanged(int index);
     void printPresets();
+    void loadKeys();
 
 private:
     Ui::MainWindow *ui;
     QLabel *connectingStatus;
     bool isConnected{false};
     DataBase db;
+    Configuration conf;
     ListPresets list;
 };
 #endif // MAINWINDOW_H

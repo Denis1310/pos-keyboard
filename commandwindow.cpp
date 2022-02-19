@@ -17,8 +17,6 @@ CommandWindow::~CommandWindow()
     delete ui;
 }
 
-#include <QDebug>
-
 void CommandWindow::on_typeComboBox_currentIndexChanged(int index)
 {
     ui->dataLine->setDisabled(false);
@@ -54,5 +52,17 @@ void CommandWindow::on_typeComboBox_currentIndexChanged(int index)
         break;
     #endif
     }
+}
+
+
+void CommandWindow::on_backButton_clicked()
+{
+
+}
+
+
+void CommandWindow::on_doneButton_clicked()
+{
+
 }
 

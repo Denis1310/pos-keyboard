@@ -18,14 +18,7 @@ bool DataBase::openDB(QSqlDatabase DB_name, QString path)
     DB_name = QSqlDatabase::addDatabase("QSQLITE");
     DB_name.setDatabaseName(path);
 
-    if (DB_name.open() == true)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (bool)DB_name.open();
 }
 
 // Припинити з'єднання з бд, передавши об'єкт бд
@@ -56,11 +49,11 @@ bool DataBase::deleteDB()
     }
 }
 
-// відкрити БД в папці проекту та вигрузити дані в озп
+// Відкрити БД в папці проекту та вигрузити дані в озп
 bool DataBase::readDB(QString DB_name)
 {
     this->preset_name = DB_name;
-    this->presetDB_path = "./" + DB_name + ".db";
+    this->presetDB_path = "./Presets/" + DB_name + ".db";
 
     if (checkExistPreset() == true)
     {
@@ -142,16 +135,9 @@ bool DataBase::checkExistPreset()
 
         int size = query->value(0).toInt();
 
-        if (size == 1)
-        {            
-            closeDB(mainDB);
-            return true;
-        }
-        else
-        {
-            closeDB(mainDB);
-            return false;
-        }
+        closeDB(mainDB);
+
+        return (size == 1) ? (true) : (false);
     }
     else
     {
@@ -163,7 +149,7 @@ bool DataBase::checkExistPreset()
 bool DataBase::createDB(QString DB_name)
 {
     this->preset_name = DB_name;
-    this->presetDB_path = "./" + DB_name + ".db";
+    this->presetDB_path = "./Presets/" + DB_name + ".db";
 
     if (!checkExistPreset())
     {
@@ -377,15 +363,17 @@ bool DataBase::isValid(QString DB_name)
         {
             switch(c)
             {
-                case '\\': return false; break;
-                case '/':  return false; break;
-                case '"':  return false; break;
-                case ':':  return false; break;
-                case '*':  return false; break;
-                case '?':  return false; break;
-                case '<':  return false; break;
-                case '>':  return false; break;
-                case '|':  return false; break;
+                case '\\':
+                case '/':
+                case '"':
+                case ':':
+                case '*':
+                case '?':
+                case '<':
+                case '>':
+                case '|':
+                    return false;
+                    break;
             }
 
         }
@@ -400,7 +388,7 @@ bool DataBase::importDB(QString DB_path)
     this->preset_name = fileinfo.baseName();
 
     QString folder_path = DB_path;
-    QString this_path = "./" + this->preset_name + ".db";
+    QString this_path = "./Presets/" + this->preset_name + ".db";
 
     this->presetDB_path = folder_path;
 
@@ -432,34 +420,6 @@ bool DataBase::importDB(QString DB_path)
         return false;
     }
 }
-
-// Метод для відкриття БД в папці
-/*bool DataBase::findDB(QString DB_path)
-{
-    QFileInfo fileinfo(DB_path);
-    this->preset_name = fileinfo.baseName();
-    this->presetDB_path = DB_path;
-
-    if (checkExistPreset() == true)
-    {
-        if (openDB(this->presetDB, presetDB_path) == true)
-        {
-            synchronizationWithDB();
-
-            closeDB(this->presetDB);
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else
-    {
-        return false;
-    }
-}*/
 
 // Деструктор: видалення динамічного об'єкта QsqlQuery *query
 DataBase::~DataBase()

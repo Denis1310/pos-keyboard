@@ -18,6 +18,8 @@ public:
 
 private slots:
     void on_typeComboBox_currentIndexChanged(int index);
+    void on_backButton_clicked();
+    void on_doneButton_clicked();
 
 private:
     Ui::CommandWindow *ui;

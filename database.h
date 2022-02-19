@@ -39,8 +39,6 @@ public:
     void synchronizationWithDB();
     bool exportDB(QString folder_path);
     bool importDB(QString DB_path);
-    //bool findDB(QString DB_path);
-
 
 private:
     bool checkImportedDB();
