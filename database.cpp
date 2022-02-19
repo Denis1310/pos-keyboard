@@ -94,7 +94,7 @@ void DataBase::synchronizationWithDB()
 // Видалити пресет з головної бд
 void DataBase::deletePreset()
 {
-    QString path = "./../pos-keyboardPJ/Data/Database.db";
+    QString path = "./Data/Database.db";
 
     if (openDB(this->mainDB, path) == true)
     {
@@ -122,7 +122,7 @@ void DataBase::deletePreset()
 // Перевірка існування пресету в головній БД
 bool DataBase::checkExistPreset()
 {
-    QString path = "./../pos-keyboardPJ/Data/Database.db";
+    QString path = "./Data/Database.db";
 
     if (openDB(this->mainDB, path) == true)
     {
@@ -181,7 +181,7 @@ bool DataBase::createDB(QString DB_name)
 // Запис назви пресету в головну БД
 void DataBase::insertPreset()
 {
-    QString path = "./../pos-keyboardPJ/Data/Database.db";
+    QString path = "./Data/Database.db";
 
     if (openDB(this->mainDB, path) == true)
     {
