@@ -54,8 +54,58 @@ void MainWindow::loadKeys()
 void MainWindow::on_commandTable_cellDoubleClicked(int row, int column)
 {
     CommandWindow *commandWindow = new CommandWindow;
+    commandWindow->setNum(tableToList(row, column));
     commandWindow->setModal(true);
     commandWindow->exec();
+
+}
+
+// Конвертує
+int MainWindow::tableToList(int row, int column)
+{
+    switch (row)
+    {
+        case 0: switch (column)
+                {
+                    case 0: return 0;
+                    case 1: return 1;
+                    case 2: return 2;
+                    case 3: return 3;
+                };
+
+        case 1: switch (column)
+                {
+                    case 0: return 4;
+                    case 1: return 5;
+                    case 2: return 6;
+                    case 3: return 7;
+                };
+
+        case 2: switch (column)
+                {
+                    case 0: return 8;
+                    case 1: return 9;
+                    case 2: return 10;
+                    case 3: return 11;
+                };
+
+        case 3: switch (column)
+                {
+                    case 0: return 12;
+                    case 1: return 13;
+                    case 2: return 14;
+                    case 3: return 15;
+                };
+
+        case 4: switch (column)
+                {
+                    case 0: return 16;
+                    case 1: return 17;
+                    case 2: return 18;
+                    case 3: return 19;
+                };
+
+    };
 }
 
 // Вибір налаштувань

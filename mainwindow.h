@@ -34,6 +34,8 @@ private slots:
     void loadKeys();
 
 private:
+    int tableToList(int row, int column);
+
     Ui::MainWindow *ui;
     QLabel *connectingStatus;
     bool isConnected{false};

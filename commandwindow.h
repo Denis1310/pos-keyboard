@@ -14,6 +14,9 @@ class CommandWindow : public QDialog
 
 public:
     explicit CommandWindow(QWidget *parent = nullptr);
+    void setNum(int other);
+    std::string createCommand(int, std::string);
+    bool runCommand(std::string);
     ~CommandWindow();
 
 private slots:
@@ -23,6 +26,7 @@ private slots:
 
 private:
     Ui::CommandWindow *ui;
+    int num;
 };
 
 #endif // COMMANDWINDOW_H
