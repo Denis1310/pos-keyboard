@@ -2,6 +2,7 @@
 #define COMMANDWINDOW_H
 
 #include "enums.h"
+#include "database.h"
 #include <QDialog>
 
 namespace Ui {
@@ -15,8 +16,10 @@ class CommandWindow : public QDialog
 public:
     explicit CommandWindow(QWidget *parent = nullptr);
     void setNum(int other);
+    void setDB(DataBase& other);
     std::string createCommand(int, std::string);
     bool runCommand(std::string);
+    void keyPress(int keyCode);
     ~CommandWindow();
 
 private slots:
@@ -26,6 +29,7 @@ private slots:
 
 private:
     Ui::CommandWindow *ui;
+    DataBase *db;
     int num;
 };
 

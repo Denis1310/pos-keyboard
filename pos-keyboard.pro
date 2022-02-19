@@ -24,8 +24,7 @@ HEADERS += \
     enums.h \
     listpresets.h \
     mainwindow.h \
-    settingswindow.h \
-    whatKeyPress.h
+    settingswindow.h
 
 FORMS += \
     commandwindow.ui \
