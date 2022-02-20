@@ -68,10 +68,9 @@ void CommandWindow::on_doneButton_clicked()
 {
     if (ui->nameLine->text() != "" && (ui->typeComboBox->currentIndex() == 5 || ui->dataLine->text() != ""))
     {
-        db->setValues(num, ui->nameLine->text(), num,
+        db->setValues(num, ui->nameLine->text(), ui->typeComboBox->currentIndex(),
                       QString::fromStdString(createCommand(ui->typeComboBox->currentIndex(),
-                                                       db->searchCommand(num).toStdString()))
-                  );
+                                                           ui->dataLine->text().toStdString())));
 
         emit inputData();
         close();

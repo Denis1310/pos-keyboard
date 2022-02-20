@@ -125,6 +125,7 @@ void MainWindow::on_importAction_triggered()
     QString fileName = QFileDialog::getOpenFileName(0, "Імпорт пресету", "", "*.db");
     if (db.importDB(fileName))
     {
+        // Добавлення пресету в ComboBox та його вибір
         QFileInfo fileInfo(fileName);
         ui->presetsComboBox->addItem(fileInfo.baseName());
         ui->presetsComboBox->setCurrentIndex(ui->presetsComboBox->count()-1);
