@@ -123,7 +123,17 @@ void MainWindow::on_settingsAction_triggered()
 void MainWindow::on_importAction_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(0, "Імпорт пресету", "", "*.db");
-    db.importDB(fileName);
+    if (db.importDB(fileName))
+    {
+        QFileInfo fileInfo(fileName);
+        ui->presetsComboBox->addItem(fileInfo.baseName());
+        ui->presetsComboBox->setCurrentIndex(ui->presetsComboBox->count()-1);
+        conf.setLastPreset(fileInfo.baseName());
+    }
+    else
+    {
+        QMessageBox::warning(this, "", "Помилка під час імпорту пресету");
+    }
 }
 
 // Вибір експорту пресету
@@ -135,7 +145,10 @@ void MainWindow::on_exportAction_triggered()
 
     QString path = directoryName.getExistingDirectory();
 
-    db.exportDB(path);
+    if (!db.exportDB(path))
+    {
+        QMessageBox::warning(this, "", "Помилка під час експорту пресету");
+    }
 }
 
 // Вибір видалення пресету
