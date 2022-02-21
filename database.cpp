@@ -242,9 +242,9 @@ void DataBase::fillTable()
     if (openDB(this->presetDB, presetDB_path) == true)
     {
         query = new QSqlQuery(presetDB);
-        query->exec("INSERT INTO preset (virtualKey)"
-                    "VALUES(0),(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),"
-                    "(11),(12),(13),(14),(15),(16),(17),(18),(19);");
+        query->exec("INSERT INTO preset (virtualKey, commandType)"
+                    "VALUES(0, -1),(1, -1),(2, -1),(3, -1),(4, -1),(5, -1),(6, -1),(7, -1),(8, -1),(9, -1),(10, -1),"
+                    "(11, -1),(12, -1),(13, -1),(14, -1),(15, -1),(16, -1),(17, -1),(18, -1),(19, -1);");
 
         closeDB(presetDB);
     }
@@ -376,7 +376,7 @@ bool DataBase::exportDB(QString path)
 // Перевірка валідації назви пресету
 bool DataBase::isValid(QString DB_name)
 {
-    string utf8_DB_name = DB_name.toUtf8().constData();
+    std::string utf8_DB_name = DB_name.toUtf8().constData();
 
     if (DB_name.size() > 200 || DB_name.size() < 3)
     {
@@ -408,14 +408,11 @@ bool DataBase::isValid(QString DB_name)
 
 // Метод для імпорту БД
 bool DataBase::importDB(QString DB_path)
-{    
+{
     QFileInfo fileinfo(DB_path);
     this->preset_name = fileinfo.baseName();
-
-    QString folder_path = DB_path;
+    this->presetDB_path = DB_path;
     QString this_path = "./Presets/" + this->preset_name + ".db";
-
-    this->presetDB_path = folder_path;
 
     if (!checkExistPreset())
     {
@@ -423,10 +420,12 @@ bool DataBase::importDB(QString DB_path)
         {
             if (checkImportedDB() == true)
             {
-                QFile::copy(folder_path, this_path);
+                QFile::copy(presetDB_path, this_path);
                 insertPreset();
                 this->presetDB_path = this_path;
-
+                openDB(this->presetDB, presetDB_path);
+                synchronizationWithDB();
+                closeDB(this->presetDB);
                   return true;
             }
             else
@@ -470,6 +469,8 @@ bool DataBase::checkImportedDB()
     }
 
     closeDB(presetDB);
+
+    qDebug() << presetDB_path;
 
     return DB_structure == DB_standard? (true) : (false);
 
