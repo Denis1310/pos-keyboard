@@ -66,10 +66,6 @@ bool ListPresets::removePreset(QString name)
         if (db.deleteDB() == true)
         {
             presets.removeOne(name);
-            for(QString preset : presets)
-                {
-                    qDebug() << preset;
-                }
             return true;
         }
         else

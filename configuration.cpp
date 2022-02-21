@@ -28,7 +28,7 @@ void Configuration::checkExistsConfigurationFile()
     }
 }
 
-void DataBase::directoryCheck()
+void Configuration::directoryCheck()
 {
     QString db_path = "./Data";
     QString presets_path = "./Presets";
