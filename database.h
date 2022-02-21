@@ -12,11 +12,13 @@
 #include <filesystem>
 #include <QFileInfo>
 #include <QSqlError>
+#include <QDir>
 
 using namespace std;
 
 class DataBase
 {
+
 private:
     QString commands[20][2];
     int command_type[20];
@@ -35,17 +37,19 @@ public:
     bool deleteDB();
     bool clear(int virtual_key);    
     bool readDB(QString DB_name);    
-    bool createDB(QString DB_name);    
-    void synchronizationWithDB();
+    bool createDB(QString DB_name);
     bool exportDB(QString folder_path);
     bool importDB(QString DB_path);
 
 private:
-    bool checkImportedDB();
     QString presetDB_path;
     QSqlDatabase mainDB, presetDB;
     QSqlQuery *query;
     QString createTable();
+    void checkExistsDatabaseFile();
+    void directoryCheck();
+    void synchronizationWithDB();
+    bool checkImportedDB();    
     bool openDB(QSqlDatabase DB_name, QString path);
     bool openDB(QSqlDatabase DB_name);
     void closeDB(QSqlDatabase DB_name);
@@ -56,6 +60,7 @@ private:
     void setValuesInDB(int virtual_key);
     void fillVirtualKeys();
     void fillCommandType();
+
 };
 
 #endif // DATABASE_H

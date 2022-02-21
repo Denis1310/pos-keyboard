@@ -2,7 +2,37 @@
 
 Configuration::Configuration()
 {
+    directoryCheck();
+    checkExistsConfigurationFile();
     readDB();
+}
+
+void Configuration::checkExistsConfigurationFile()
+{
+    QString path = "./Data/config.db";
+
+    if (!QFile::exists(path))
+    {
+        openDB();
+        query = new QSqlQuery();
+        query->exec("CREATE TABLE config ("
+                    "last_preset TEXT,"
+                    "await INTEGER,"
+                    "check_autoload INTEGER,"
+                    "id INTEGER);");
+
+        query->exec("INSERT INTO config "
+                    "(await, check_autoload, id) "
+                    "VALUES (30, 0, 1);");
+        closeDB();
+    }
+}
+
+void Configuration::directoryCheck()
+{
+    QString path = "./Data";
+    QDir directory;
+    directory.mkdir(path);
 }
 
 // Видаляє динамічний об'єкт QsqlQuery * query

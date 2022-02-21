@@ -4,6 +4,31 @@ DataBase::DataBase()
 {
     fillVirtualKeys();
     fillCommandType();
+    directoryCheck();
+    checkExistsDatabaseFile();
+}
+
+void DataBase::checkExistsDatabaseFile()
+{
+    QString path = "./Data/Database.db";
+
+    if (!QFile::exists(path))
+    {
+        openDB(mainDB, path);
+        query = new QSqlQuery();
+        query->exec("CREATE TABLE presets ("
+                    "id INTEGER,"
+                    "presetName TEXT,"
+                    "PRIMARY KEY (id AUTOINCREMENT) );");
+        closeDB(mainDB);
+    }
+}
+
+void DataBase::directoryCheck()
+{
+    QString path = "./Data";
+    QDir directory;
+    directory.mkdir(path);
 }
 
 // Повертає назву активного пресета
@@ -349,7 +374,7 @@ bool DataBase::exportDB(QString path)
 // Перевірка валідації назви пресету
 bool DataBase::isValid(QString DB_name)
 {
-    DB_name = DB_name.simplified().remove(' ');
+    //DB_name = DB_name.simplified().remove(' ');
 
     string utf8_DB_name = DB_name.toUtf8().constData();
 

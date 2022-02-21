@@ -39,12 +39,12 @@ void SettingsWindow::on_doneButton_clicked()
 
             if ((bool)ui->autoStartCheckBox->checkState())
             {
-                settings.setValue("POS_Keyboard", QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
+//                settings.setValue("POS_Keyboard", QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
                 settings.sync();
             }
             else
             {
-                settings.remove(POS_Keyboard);
+//                settings.remove(POS_Keyboard);
             }
         }
     #endif
