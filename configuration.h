@@ -5,7 +5,6 @@
 #include <iostream>
 #include <QtSql/QSqlDatabase>
 #include <QSqlQuery>
-#include <QSqlError>
 #include <QDir>
 
 class Configuration
