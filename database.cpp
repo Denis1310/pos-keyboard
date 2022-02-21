@@ -26,9 +26,11 @@ void DataBase::checkExistsDatabaseFile()
 
 void DataBase::directoryCheck()
 {
-    QString path = "./Data";
+    QString DB_path = "./Data";
+    QString presets_path = "./Presets";
     QDir directory;
-    directory.mkdir(path);
+    directory.mkdir(DB_path);
+    directory.mkdir(presets_path);
 }
 
 // Повертає назву активного пресета
@@ -353,7 +355,7 @@ int DataBase::searchCommandType(int virtual_key)
 // Метод для експорту БД
 bool DataBase::exportDB(QString path)
 {
-    QString folder_path = path + "/" +this->preset_name + ".db";
+    QString folder_path = path + "/" + this->preset_name + ".db";
 
     if (QFile::exists(presetDB_path) == true)
     {
@@ -374,8 +376,6 @@ bool DataBase::exportDB(QString path)
 // Перевірка валідації назви пресету
 bool DataBase::isValid(QString DB_name)
 {
-    //DB_name = DB_name.simplified().remove(' ');
-
     string utf8_DB_name = DB_name.toUtf8().constData();
 
     if (DB_name.size() > 200 || DB_name.size() < 3)

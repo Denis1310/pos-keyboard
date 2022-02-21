@@ -28,11 +28,13 @@ void Configuration::checkExistsConfigurationFile()
     }
 }
 
-void Configuration::directoryCheck()
+void DataBase::directoryCheck()
 {
-    QString path = "./Data";
+    QString db_path = "./Data";
+    QString presets_path = "./Presets";
     QDir directory;
-    directory.mkdir(path);
+    directory.mkdir(db_path);
+    directory.mkdir(presets_path);
 }
 
 // Видаляє динамічний об'єкт QsqlQuery * query
