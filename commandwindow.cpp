@@ -7,8 +7,8 @@ CommandWindow::CommandWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-#ifdef _WIN32 || _WIN64
-    ui->typeComboBox->addItem("Спец клавіша");
+#ifdef __linux__
+    ui->typeComboBox->removeItem(7);
 #endif
 }
 
@@ -48,7 +48,7 @@ void CommandWindow::on_typeComboBox_currentIndexChanged(int index)
 
     #ifdef _WIN32 || _WIN64
     case commandType::specialKey:
-
+        ui->dataLabel->setText("Спеціальна клавіша:");
         break;
     #endif
     }

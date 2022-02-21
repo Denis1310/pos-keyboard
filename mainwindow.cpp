@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connectingStatus = new QLabel();
 
-
     // TODO:
     connectingStatus->setText(((isConnected) ? ("Статус: Підключено") : ("Статус: Не підключено")));
 

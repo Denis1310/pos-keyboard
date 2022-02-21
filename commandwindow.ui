@@ -76,6 +76,11 @@
            <string>Консольна команда</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>Спец клавіша</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>
