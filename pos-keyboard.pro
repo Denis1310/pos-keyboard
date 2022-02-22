@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     commandwindow.cpp \
+    comport.cpp \
     configuration.cpp \
     database.cpp \
     listpresets.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     commandwindow.h \
+    comport.h \
     configuration.h \
     database.h \
     enums.h \

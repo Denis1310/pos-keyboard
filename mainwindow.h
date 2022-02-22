@@ -10,6 +10,7 @@
 #include "database.h"
 #include "listpresets.h"
 #include "configuration.h"
+#include "comport.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,5 +45,6 @@ private:
     DataBase db;
     Configuration conf;
     ListPresets list;
+    ComPort port;
 };
 #endif // MAINWINDOW_H

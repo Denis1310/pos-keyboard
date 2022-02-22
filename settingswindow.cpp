@@ -7,16 +7,14 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    prevLoadState = db.getAutoload();
-
-    ui->autoStartCheckBox->setChecked(prevLoadState);
-
     #ifdef __linux__
         ui->autoStartCheckBox->hide();
         ui->autoStartLabel->hide();
     #endif
 
     #ifdef _WIN32 || _WIN64
+        prevLoadState = db.getAutoload();
+        ui->autoStartCheckBox->setChecked(prevLoadState);
         prevLoadState = (bool)ui->autoStartCheckBox->checkState();
     #endif
 }
