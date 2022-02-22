@@ -5,7 +5,7 @@
 #include <iostream>
 #include <QtSql/QSqlDatabase>
 #include <QSqlQuery>
-#include <QSqlError>
+#include <QDir>
 
 class Configuration
 {
@@ -28,6 +28,8 @@ public:
 private:
     QSqlDatabase db;
     QSqlQuery *query;
+    void directoryCheck();
+    void checkExistsConfigurationFile();
     void openDB();
     void closeDB();
     void readDB();

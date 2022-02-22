@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connectingStatus = new QLabel();
 
-
     // TODO:
     connectingStatus->setText(((isConnected) ? ("Статус: Підключено") : ("Статус: Не підключено")));
 
@@ -133,7 +132,7 @@ void MainWindow::on_importAction_triggered()
     }
     else
     {
-        QMessageBox::warning(this, "", "Помилка під час імпорту пресету");
+        QMessageBox::warning(this, "Помилка", "Помилка під час імпорту пресету");
     }
 }
 
@@ -148,7 +147,7 @@ void MainWindow::on_exportAction_triggered()
 
     if (!db.exportDB(path))
     {
-        QMessageBox::warning(this, "", "Помилка під час експорту пресету");
+        QMessageBox::warning(this, "Помилка", "Помилка під час експорту пресету");
     }
 }
 

@@ -9,14 +9,14 @@ int toVKCode(std::string key)
     else if (key == "Clear")         return VK_CLEAR;
     else if (key == "Enter")         return VK_RETURN;
     else if (key == "Shift")         return VK_SHIFT;
-    else if (key == "LShift")        return VK_LSHIFT;
-    else if (key == "RShift")        return VK_RSHIFT;
-    else if (key == "Ctrl")          return VK_CONTROL;
-    else if (key == "LCtrl")         return VK_LCONTROL;
-    else if (key == "RCtrl")         return VK_RCONTROL;
+    else if (key == "Shift_L")       return VK_LSHIFT;
+    else if (key == "Shift_R")       return VK_RSHIFT;
+    else if (key == "Control")       return VK_CONTROL;
+    else if (key == "Control_L")     return VK_LCONTROL;
+    else if (key == "Control_R")     return VK_RCONTROL;
     else if (key == "Alt")           return VK_MENU;
-    else if (key == "LAlt")          return VK_LMENU;
-    else if (key == "RAlt")          return VK_RMENU;
+    else if (key == "Alt_L")         return VK_LMENU;
+    else if (key == "Alt_R")         return VK_RMENU;
     else if (key == "Pause")         return VK_PAUSE;
     else if (key == "Capslock")      return VK_CAPITAL;
     else if (key == "Escape")        return VK_ESCAPE;
@@ -36,8 +36,8 @@ int toVKCode(std::string key)
     else if (key == "Insert")        return VK_INSERT;
     else if (key == "Delete")        return VK_DELETE;
     else if (key == "Help")          return VK_HELP;
-    else if (key == "LWin")          return VK_LWIN;
-    else if (key == "RWin")          return VK_RWIN;
+    else if (key == "Win_L")         return VK_LWIN;
+    else if (key == "Win_R")         return VK_RWIN;
     else if (key == "Multiply")      return VK_MULTIPLY;
     else if (key == "Add")           return VK_ADD;
     else if (key == "Separator")     return VK_SEPARATOR;
@@ -116,6 +116,7 @@ int toVKCode(std::string key)
     else if (key == "X")             return VK_X;
     else if (key == "Y")             return VK_Y;
     else if (key == "Z")             return VK_Z;
+
     else if (key == "Mute")          return VK_VOLUME_MUTE;
     else if (key == "Down")          return VK_VOLUME_DOWN;
     else if (key == "Up")            return VK_VOLUME_UP;

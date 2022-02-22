@@ -1,22 +1,16 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include <QSqlRecord>
 #include <iostream>
-#include <cstdio>
 #include <QtSql/QSqlDatabase>
-#include <QDebug>
 #include <QFile>
-#include <QTextStream>
 #include <QSqlQuery>
-#include <filesystem>
 #include <QFileInfo>
-#include <QSqlError>
-
-using namespace std;
+#include <QDir>
 
 class DataBase
 {
+
 private:
     QString commands[20][2];
     int command_type[20];
@@ -26,36 +20,39 @@ private:
 public:
     DataBase();
     ~DataBase();
-    bool isValid(QString DB_name);
     void setValues(int _virtual_key, QString _command_name, int _command_type, QString _command);
     QString searchCommandName(int virtual_key);
     QString searchCommand(int virtual_key);
     QString getPresetName();
     int searchCommandType(int virtual_key);
     bool deleteDB();
-    bool clear(int virtual_key);    
-    bool readDB(QString DB_name);    
-    bool createDB(QString DB_name);    
-    void synchronizationWithDB();
+    bool clear(int virtual_key);
+    bool readDB(QString DB_name);
+    bool createDB(QString DB_name);
     bool exportDB(QString folder_path);
     bool importDB(QString DB_path);
+    bool isValid(QString DB_name);
 
 private:
-    bool checkImportedDB();
     QString presetDB_path;
     QSqlDatabase mainDB, presetDB;
     QSqlQuery *query;
     QString createTable();
+    bool checkImportedDB();
     bool openDB(QSqlDatabase DB_name, QString path);
     bool openDB(QSqlDatabase DB_name);
+    bool checkExistPreset();
     void closeDB(QSqlDatabase DB_name);
     void fillTable();
     void insertPreset();
-    bool checkExistPreset();
     void deletePreset();
     void setValuesInDB(int virtual_key);
     void fillVirtualKeys();
     void fillCommandType();
+    void checkExistsDatabaseFile();
+    void directoryCheck();
+    void synchronizationWithDB();
+
 };
 
 #endif // DATABASE_H

@@ -7,6 +7,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    prevLoadState = db.getAutoload();
+
+    ui->autoStartCheckBox->setChecked(prevLoadState);
+
     #ifdef __linux__
         ui->autoStartCheckBox->hide();
         ui->autoStartLabel->hide();
@@ -44,7 +48,7 @@ void SettingsWindow::on_doneButton_clicked()
             }
             else
             {
-                settings.remove(POS_Keyboard);
+                settings.remove("POS_Keyboard");
             }
         }
     #endif
